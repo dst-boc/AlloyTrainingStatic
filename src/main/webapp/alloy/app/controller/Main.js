@@ -3,7 +3,7 @@ Ext.define('Training.controller.Main', {
 
 	init : function() {
 		this.control({
-			'textfield' : {
+			'app-main textfield[name=name]' : {
 				change : this.updateLabel
 			},
 		});
