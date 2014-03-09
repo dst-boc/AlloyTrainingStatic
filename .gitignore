@@ -5,3 +5,5 @@
 .classpath
 .project
 .settings
+
+/src/main/webapp/alloy/ext

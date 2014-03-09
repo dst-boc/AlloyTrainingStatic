@@ -25,11 +25,13 @@ Ext.define('Training.controller.Movies', {
 
 	saveMovie : function(form, formCmp) {
 		var movie = Ext.create('Training.model.Movie', form.getValues());
+		var store = this.getMoviesStore();
 
 		if (movie.isValid()) {
 			movie.save({
 				success : function(movie, operation) {
-					Ext.log('Movie is successfully saved.');
+					store.load();
+					form.reset();
 				},
 				failure : function(movie, operation) {
 					Ext.log({

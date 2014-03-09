@@ -1,9 +1,58 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.dstsystems.alloy.training</groupId>
-  <artifactId>alloy-training-static</artifactId>
-  <version>trunk</version>
-  <packaging>war</packaging>
-  <name>AlloyTrainingStatic</name>
-  <description>Static web project for ExtJS training.</description>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>AlloyTrainingStatic</groupId>
+	<artifactId>AlloyTrainingStatic</artifactId>
+	<version>trunk</version>
+	<packaging>war</packaging>
+	<name>alloy-training-static</name>
+	<description>Alloy Static project for ExtJS Training Purpose.</description>
+
+	<properties>
+		<ThirdParty.SenchaExtJS.version>4.2.2.1144</ThirdParty.SenchaExtJS.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.sencha.extjs</groupId>
+			<artifactId>sencha-extjs</artifactId>
+			<version>${ThirdParty.SenchaExtJS.version}</version>
+			<classifier>resources</classifier>
+			<type>zip</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>alloy-training-static</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<warSourceDirectory>src/main/webapp</warSourceDirectory>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<overlays>
+						<overlay>
+							<groupId>com.sencha.extjs</groupId>
+							<artifactId>sencha-extjs</artifactId>
+							<classifier>resources</classifier>
+							<type>zip</type>
+							<targetPath>alloy/ext</targetPath>
+							<includes>
+								<include>ext-all.js</include>
+								<include>ext-all-dev.js</include>
+								<include>packages/*/build/**</include>
+								<include>src/**</include>
+							</includes>
+							<excludes>
+								<exclude>packages/ext-locale/build/**</exclude>
+								<exclude>packages/ext-theme-access/build/**</exclude>
+								<exclude>packages/ext-theme-classic-sandbox/build/**</exclude>
+							</excludes>
+						</overlay>
+					</overlays>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
