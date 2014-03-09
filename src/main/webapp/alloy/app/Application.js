@@ -1,15 +1,11 @@
 Ext.define('Training.Application', {
-        name: 'Training',
+	name : 'Training',
 
-        extend: 'Ext.app.Application',
+	extend : 'Ext.app.Application',
 
-        views: [
-        // TODO: add views here
-        ],
+	views : [],
 
-        controllers: [ 'Main', 'Movies' ],
+	controllers : [ 'Main', 'Movies' ],
 
-        stores: [
-        // TODO: add stores here
-        ]
-    });
+	stores : []
+});

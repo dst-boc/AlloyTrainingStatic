@@ -35,6 +35,8 @@ Ext.define('Training.view.Main', {
 			bodyPadding : 20,
 			items : [ {
 				xtype : 'movielist'
+			}, {
+				xtype : 'movieform'
 			} ]
 		} ]
 	} ]
