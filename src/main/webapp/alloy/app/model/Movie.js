@@ -15,7 +15,7 @@ Ext.define('Training.model.Movie', {
     	},
     	reader: {
     		type: 'json', 
-    		root: '_embedded.movies'
+    		root: 'movies'
     	}
     }
 });

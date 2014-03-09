@@ -15,5 +15,29 @@ Ext.define('Training.controller.Movies', {
 
 		// ExtJS automagicall create getter and setter for Store as well.
 		console.log('Movie Count: ' + this.getMoviesStore().getCount());
+
+		this.control({
+			'movieform' : {
+				saveMovie : this.saveMovie
+			},
+		});
+	},
+
+	saveMovie : function(form, formCmp) {
+		var movie = Ext.create('Training.model.Movie', form.getValues());
+
+		if (movie.isValid()) {
+			movie.save({
+				success : function(movie, operation) {
+					Ext.log('Movie is successfully saved.');
+				},
+				failure : function(movie, operation) {
+					Ext.log({
+						level : 'error',
+						dump : movie
+					}, "Movie can't be saved.");
+				}
+			});
+		}
 	}
 });

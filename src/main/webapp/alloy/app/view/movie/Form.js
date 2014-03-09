@@ -54,17 +54,9 @@ Ext.define('Training.view.movie.Form', {
 		formBind : true, // only enabled once the form is valid
 		disabled : true,
 		handler : function() {
-			var form = this.up('form').getForm();
-			if (form.isValid()) {
-				form.submit({
-					success : function(form, action) {
-						Ext.Msg.alert('Success', action.result.msg);
-					},
-					failure : function(form, action) {
-						Ext.Msg.alert('Failed', action.result.msg);
-					}
-				});
-			}
+			var formCmp = this.up('form');
+			var form = formCmp.getForm();
+			formCmp.fireEvent('saveMovie', form, formCmp);
 		}
 	} ],
 });
