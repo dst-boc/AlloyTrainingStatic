@@ -4,7 +4,8 @@ Ext.define('Training.view.movie.Form', {
 	title : 'Movie Form',
 	bodyPadding : 20,
 	defaults : {
-		width : 400
+		width : 400,
+		msgTarget : 'under'
 	},
 	defaultType : 'textfield',
 	items : [ {
@@ -30,7 +31,8 @@ Ext.define('Training.view.movie.Form', {
 		valueField : 'value',
 		store : 'Ratings',
 		queryMode : 'local',
-		emptyText : 'Please choose rating'
+		emptyText : 'Please choose rating',
+		forceSelection : true
 	}, {
 		xtype : 'numberfield',
 		name : 'runtime',
@@ -40,5 +42,29 @@ Ext.define('Training.view.movie.Form', {
 		maxLength : 4,
 		enforceMaxLength : true,
 		emptyText : 'Please enter runtime'
-	} ]
+	} ],
+
+	buttons : [ {
+		text : 'Reset',
+		handler : function() {
+			this.up('form').getForm().reset();
+		}
+	}, {
+		text : 'Submit',
+		formBind : true, // only enabled once the form is valid
+		disabled : true,
+		handler : function() {
+			var form = this.up('form').getForm();
+			if (form.isValid()) {
+				form.submit({
+					success : function(form, action) {
+						Ext.Msg.alert('Success', action.result.msg);
+					},
+					failure : function(form, action) {
+						Ext.Msg.alert('Failed', action.result.msg);
+					}
+				});
+			}
+		}
+	} ],
 });
