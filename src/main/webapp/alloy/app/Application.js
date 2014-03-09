@@ -7,7 +7,7 @@ Ext.define('Training.Application', {
         // TODO: add views here
         ],
 
-        controllers: [ 'Main' ],
+        controllers: [ 'Main', 'Movies' ],
 
         stores: [
         // TODO: add stores here
